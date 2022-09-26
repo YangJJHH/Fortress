@@ -24,7 +24,6 @@ public class Ball : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position,explosionRadius,whatIsProp);
-
         foreach (Collider collider in colliders)
         {
             Rigidbody targetRigidbody = collider.GetComponent<Rigidbody>();
