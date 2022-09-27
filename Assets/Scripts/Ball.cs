@@ -34,6 +34,7 @@ public class Ball : MonoBehaviour
         particle.transform.parent = null;
         particle.Play();
         audiosource.Play();
+        GameManager.instance.OnBallDestroy();
         Destroy(particle.gameObject, particle.duration);
         Destroy(gameObject);
 
@@ -51,6 +52,11 @@ public class Ball : MonoBehaviour
         float edgetToCenterDistance = explosionRadius - distance;
         float percentage = edgetToCenterDistance / explosionRadius;
         return (maxDamage * percentage);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnBallDestroy();
     }
 
 

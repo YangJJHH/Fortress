@@ -21,6 +21,7 @@ public class BallShooter : MonoBehaviour
     float currentForce;
     float chargeSpeed;
     bool fired;
+    public CamFollow cam;
     #endregion
     private void OnEnable()
     {
@@ -75,7 +76,7 @@ public class BallShooter : MonoBehaviour
         ballInstance.velocity = currentForce * firePosition.forward;
         shootingAudio.clip = audioClips[0];
         shootingAudio.Play();
-
+        cam.SetTarget(ballInstance.transform, CamFollow.State.Tracking);
         currentForce = minForce;
     }
 }
